@@ -29,7 +29,6 @@ class ViewController: UIViewController {
             //Setting time for notification trigger
             //블로그 예제에서는 TimeIntervalNotificationTrigger을 사용했지만, UNCalendarNotificationTrigger사용법도 같이 올려놓을게요!
             
-            
             //1. Use UNCalendarNotificationTrigger
             let date = Date(timeIntervalSinceNow: 70)
             var dateCompenents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
@@ -38,7 +37,7 @@ class ViewController: UIViewController {
             
             
             //2. Use TimeIntervalNotificationTrigger
-            let TimeIntervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let TimeIntervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
             
             //Adding Request
             // MARK: - identifier가 다 달라야만 Notification Grouping이 됩니닷..!!
@@ -50,7 +49,8 @@ class ViewController: UIViewController {
     }
     
 }
-extension ViewController : UNUserNotificationCenterDelegate{
+
+extension ViewController : UNUserNotificationCenterDelegate {
     //To display notifications when app is running  inforeground
     
     //앱이 foreground에 있을 때. 즉 앱안에 있어도 push알림을 받게 해줍니다.
@@ -65,5 +65,4 @@ extension ViewController : UNUserNotificationCenterDelegate{
         self.present(settingsViewController, animated: true, completion: nil)
         
     }
-    
 }
